@@ -1,4 +1,4 @@
-body{
+body {
     font: normal 15px Arial;
     margin: 0;
     padding: 0;
@@ -7,13 +7,14 @@ body{
 
 #sessao-venda {
     text-align: center;
+    padding: 20px;
 }
 
 #itens_section {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
+    gap: 20px;
 }
 
 .box {
@@ -21,14 +22,63 @@ body{
     border-radius: 12px;
     width: 300px;
     height: 450px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Adicionado */
 }
 
 .box__img {
-    margin-top: 10px;
     width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .box__name {
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.box__price {
+    margin-top: 5px;
+}
+
+.box__description {
+    margin-top: 10px;
+}
+
+.box__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.box__buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.box__buttons button:focus {
+    outline: none;
+}
+
+.box__buttons button:hover {
+    opacity: 0.8;
+}
+
+.box__buttons .delete-button {
+    background-color: #ff5c5c;
+    color: white;
+}
+
+.box__buttons .favorite-button {
+    background-color: #55b8ff;
+    color: white;
 }

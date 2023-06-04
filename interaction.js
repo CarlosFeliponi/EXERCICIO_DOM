@@ -59,3 +59,64 @@ ITENS_LOJA.forEach(function(dados){
                                     <p>${dados.descricao}</p>
                                 </div>`
 })
+
+var itens_section = document.getElementById('itens_section');
+
+function renderizarItens() {
+  itens_section.innerHTML = "";
+
+  ITENS_LOJA.forEach(function(dados, index) {
+    var box = document.createElement('div');
+    box.className = 'box';
+
+    var img = document.createElement('img');
+    img.src = dados.url_img;
+    img.className = 'box__img';
+    box.appendChild(img);
+
+    var name = document.createElement('h2');
+    name.className = 'box__name';
+    name.textContent = dados.nome;
+    box.appendChild(name);
+
+    var price = document.createElement('p');
+    price.innerHTML = `<strong>Preço:</strong> R$ ${dados.preco}`;
+    box.appendChild(price);
+
+    var description = document.createElement('h3');
+    description.textContent = 'Descrição:';
+    box.appendChild(description);
+
+    var descText = document.createElement('p');
+    descText.textContent = dados.descricao;
+    box.appendChild(descText);
+
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Excluir';
+    deleteButton.addEventListener('click', function() {
+      excluirItem(index);
+    });
+    box.appendChild(deleteButton);
+
+    var favoriteButton = document.createElement('button');
+    favoriteButton.textContent = dados.favorito ? 'Remover Favorito' : 'Favoritar';
+    favoriteButton.addEventListener('click', function() {
+      marcarFavorito(index);
+    });
+    box.appendChild(favoriteButton);
+
+    itens_section.appendChild(box);
+  });
+}
+
+function excluirItem(index) {
+  ITENS_LOJA.splice(index, 1);
+  renderizarItens();
+}
+
+function marcarFavorito(index) {
+  ITENS_LOJA[index].favorito = !ITENS_LOJA[index].favorito;
+  renderizarItens();
+}
+
+renderizarItens();
